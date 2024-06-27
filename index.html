@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Handling Example</title>
+<style>
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="button-container" id="buttonContainer">
+  <button class="button" data-index="1">Button 1</button>
+  <button class="button" data-index="2">Button 2</button>
+  <button class="button" data-index="3">Button 3</button>
+  <button class="button" data-index="4">Button 4</button>
+  <button class="button" data-index="5">Button 5</button>
+</div>
+
+<script>
+// Отримуємо батьківський контейнер кнопок
+const buttonContainer = document.getElementById('buttonContainer');
+
+// Додаємо обробник подій для батьківського контейнера
+buttonContainer.addEventListener('click', function(event) {
+  // Перевіряємо, щоб обробляти кліки лише на кнопках (не на контейнері)
+  if (event.target.classList.contains('button')) {
+    // Отримуємо текст кнопки, яку клікнули
+    const buttonText = event.target.textContent;
+    // Отримуємо індекс кнопки за допомогою атрибуту data-index
+    const buttonIndex = event.target.getAttribute('data-index');
+    
+    // Виводимо повідомлення
+    alert(`Клікнуто кнопку "${buttonText}" з індексом ${buttonIndex}`);
+  }
+});
+</script>
+
+</body>
+</html>
